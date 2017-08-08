@@ -43,7 +43,7 @@ def upload_new_folder(dbx, from_folder, to_folder, display_progress = True):
         pass
 
     if display_progress == True:
-        print("copie de : " + str(len(list_files)) + " fichiers")
+        print("copie de : " + str(len(list_files)) + " fichiers", flush = True)
 
     try:
         dbx.files_create_folder(to_folder)
@@ -59,12 +59,12 @@ def upload_new_folder(dbx, from_folder, to_folder, display_progress = True):
             file.close()
             dbx.files_upload(bytes_read, to_folder + '/' + file_name)
             if display_progress == True:
-                print(str(number))
+                print(str(number), flush = True)
                 number += 1
         except Exception as e:
-            print(e)
+            print(e, flush = True)
             if display_progress == True:
-                print("echec de transfert du fichier " + file_name)
+                print("echec de transfert du fichier " + file_name, flush = True)
     if display_progress == True:
         print("copie du repertoire finie")
 

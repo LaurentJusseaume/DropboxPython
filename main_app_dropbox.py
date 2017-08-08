@@ -8,9 +8,9 @@ file = open('token.txt', 'r')
 token = file.read()
 file.close()
 
-print("connexion a Dropbox")
+print("connexion a Dropbox", flush = True)
 dbx = connect_to_dropbox(token)
-print("comparaison des arborescences")
+print("comparaison des arborescences", flush = True)
 missing = compare_dropbox_and_local(dbx, root_directory_dropbox, root_directory_local)
 
 for year in sorted(missing.keys()):
@@ -23,6 +23,6 @@ year = input ('annee :')
 index = int (input('numero de repertoire : '))
 source_folder = root_directory_local + '\\'+ year + '\\' + missing[year][index]
 dest_folder = root_directory_dropbox + '/'+ year + '/' + missing[year][index]
-print(" copie de " + source_folder + " vers " + dest_folder)
+print(" copie de " + source_folder + " vers " + dest_folder, flush = True)
 upload_new_folder(dbx, source_folder , dest_folder)
 
